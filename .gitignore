@@ -2,3 +2,4 @@ src/.vs/
 src/packages/
 src/Skybrud.SyntaxHighlighter.Markdig/bin/
 src/Skybrud.SyntaxHighlighter.Markdig/obj/
+node_modules/

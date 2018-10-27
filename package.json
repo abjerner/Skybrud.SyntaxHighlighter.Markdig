@@ -1,0 +1,18 @@
+{
+  "name": "Skybrud.SyntaxHighlighter.Markdig",
+  "url": "https://github.com/abjerner/Skybrud.SyntaxHighlighter.Markdig",
+  "license": {
+    "name": "MIT",
+    "url": "https://github.com/abjerner/Skybrud.SyntaxHighlighter.Markdig/blob/master/LICENSE.md"
+  },
+  "author": {
+    "name": "Anders Bjerner",
+    "url": "http://www.skybrud.dk/"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-zip": "~0.17.0",
+    "grunt-contrib-clean": "^0.6.0"
+  }
+}
