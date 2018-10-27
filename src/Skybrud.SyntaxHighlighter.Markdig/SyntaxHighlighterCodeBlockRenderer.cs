@@ -13,16 +13,26 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the fallback code block renderer.
+        /// </summary>
         protected CodeBlockRenderer Fallback { get; }
 
         #endregion
 
         #region Constructors
         
+        /// <summary>
+        /// Initializes a new code block renderer with default options.
+        /// </summary>
         public SyntaxHighlighterCodeBlockRenderer() {
             Fallback = new CodeBlockRenderer();
         }
 
+        /// <summary>
+        /// Initializes a new code block renderer with specified <paramref name="fallback"/>.
+        /// </summary>
+        /// <param name="fallback">A fallback code block renderer.</param>
         public SyntaxHighlighterCodeBlockRenderer(CodeBlockRenderer fallback) {
             Fallback = fallback ?? new CodeBlockRenderer();
         }
@@ -30,7 +40,7 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
         #endregion
 
         /// <summary>
-        /// Writes the specified <paramref name="block"/> to the <see cref="renderer"/>.
+        /// Writes the specified <paramref name="block"/> to the <paramref name="renderer"/>.
         /// </summary>
         /// <param name="renderer">The renderer.</param>
         /// <param name="block">The object to render.</param>
