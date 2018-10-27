@@ -15,7 +15,7 @@
     <Product>Skybrud.SyntaxHighlighter</Product>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © 2018</Copyright>
-    <Description>Skybrud.SyntaxHighlighter extension for Markdig</Description>
+    <Description>Skybrud.SyntaxHighlighter extension for Markdig.</Description>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.SyntaxHighlighter.Markdig</RepositoryUrl>
   </PropertyGroup>
   
@@ -29,7 +29,7 @@
   <ItemGroup>
     <PackageReference Include="ColorCode" Version="1.0.1" />
     <PackageReference Include="Markdig" Version="0.14.8" />
-    <PackageReference Include="Skybrud.SyntaxHighlighter" Version="1.0.1" />
+    <PackageReference Include="Skybrud.SyntaxHighlighter" Version="1.0.2" />
     <PackageReference Include="Newtonsoft.json" Version="6.0.5" />
   </ItemGroup>
 
