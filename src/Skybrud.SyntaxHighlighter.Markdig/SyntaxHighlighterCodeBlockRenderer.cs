@@ -23,7 +23,7 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
             Fallback = new CodeBlockRenderer();
         }
 
-        public SyntaxHighlighterCodeBlockRenderer(CodeBlockRenderer fallback = null) {
+        public SyntaxHighlighterCodeBlockRenderer(CodeBlockRenderer fallback) {
             Fallback = fallback ?? new CodeBlockRenderer();
         }
 
