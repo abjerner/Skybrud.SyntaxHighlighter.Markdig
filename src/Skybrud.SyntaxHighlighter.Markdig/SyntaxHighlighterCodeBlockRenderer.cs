@@ -78,6 +78,7 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
                     renderer.Write(Highlighter.HighlightJson(code));
                     break;
 
+                case "js":
                 case "javascript":
                     renderer.Write(Highlighter.HighlightJavaScript(code));
                     break;
