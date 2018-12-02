@@ -10,6 +10,36 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
     /// </summary>
     public class SyntaxHighlighterMarkdownExtension : IMarkdownExtension {
 
+        #region Properties
+
+        /// <summary>
+        /// The options for configuration the syntax highlighter extension.
+        /// </summary>
+        public SyntaxHighlighterOptions Options { get; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance with default options.
+        /// </summary>
+        public SyntaxHighlighterMarkdownExtension() {
+            Options = new SyntaxHighlighterOptions();
+        }
+
+        /// <summary>
+        /// Initializes a new instance with default options.
+        /// </summary>
+        /// <param name="options">The options for configuration the syntax highlighter extension.</param>
+        public SyntaxHighlighterMarkdownExtension(SyntaxHighlighterOptions options) {
+            Options = options ?? new SyntaxHighlighterOptions();
+        }
+
+        #endregion
+
+        #region Member methods
+
         /// <summary>
         /// Setups this extension for the specified pipeline.
         /// </summary>
@@ -34,9 +64,11 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
             if (originalCodeBlockRenderer != null) htmlRenderer.ObjectRenderers.Remove(originalCodeBlockRenderer);
 
             // Add our custom code block renderer
-            htmlRenderer.ObjectRenderers.AddIfNotAlready(new SyntaxHighlighterCodeBlockRenderer(originalCodeBlockRenderer));
+            htmlRenderer.ObjectRenderers.AddIfNotAlready(new SyntaxHighlighterCodeBlockRenderer(originalCodeBlockRenderer, Options));
 
         }
+
+        #endregion
 
     }
 

@@ -14,6 +14,11 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
         #region Properties
 
         /// <summary>
+        /// Gets the options for configuration the syntax highlighter extension.
+        /// </summary>
+        protected SyntaxHighlighterOptions Options { get; }
+
+        /// <summary>
         /// Gets the fallback code block renderer.
         /// </summary>
         protected CodeBlockRenderer Fallback { get; }
@@ -27,6 +32,16 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
         /// </summary>
         public SyntaxHighlighterCodeBlockRenderer() {
             Fallback = new CodeBlockRenderer();
+            Options = new SyntaxHighlighterOptions();
+        }
+
+        /// <summary>
+        /// Initializes a new code block renderer with default options.
+        /// </summary>
+        /// <param name="options">The options for configuration the syntax highlighter extension.</param>
+        public SyntaxHighlighterCodeBlockRenderer(SyntaxHighlighterOptions options) {
+            Fallback = new CodeBlockRenderer();
+            Options = options ?? new SyntaxHighlighterOptions();
         }
 
         /// <summary>
@@ -35,9 +50,22 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
         /// <param name="fallback">A fallback code block renderer.</param>
         public SyntaxHighlighterCodeBlockRenderer(CodeBlockRenderer fallback) {
             Fallback = fallback ?? new CodeBlockRenderer();
+            Options = new SyntaxHighlighterOptions();
+        }
+
+        /// <summary>
+        /// Initializes a new code block renderer with specified <paramref name="fallback"/>.
+        /// </summary>
+        /// <param name="fallback">A fallback code block renderer.</param>
+        /// <param name="options">The options for configuration the syntax highlighter extension.</param>
+        public SyntaxHighlighterCodeBlockRenderer(CodeBlockRenderer fallback, SyntaxHighlighterOptions options) {
+            Fallback = fallback ?? new CodeBlockRenderer();
+            Options = options ?? new SyntaxHighlighterOptions();
         }
 
         #endregion
+
+        
 
         /// <summary>
         /// Writes the specified <paramref name="block"/> to the <paramref name="renderer"/>.
@@ -66,36 +94,11 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
 
             // TODO: is this really a good idea?
             code = code.TrimEnd();
+
+            // Get the syntax language matching "language"
+            Options.TryGetAlias(language, out Language lang);
             
-            switch (language) {
-
-                case "c#":
-                case "csharp":
-                    renderer.Write(Highlighter.HighlightCSharp(code));
-                    break;
-
-                case "json":
-                    renderer.Write(Highlighter.HighlightJson(code));
-                    break;
-
-                case "js":
-                case "javascript":
-                    renderer.Write(Highlighter.HighlightJavaScript(code));
-                    break;
-
-                case "html":
-                    renderer.Write(Highlighter.HighlightHtml(code));
-                    break;
-
-                case "xml":
-                    renderer.Write(Highlighter.HighlightXml(code));
-                    break;
-
-                default:
-                    Fallback.Write(renderer, block);
-                    break;
-
-            }
+            renderer.Write(Highlighter.Highlight(code, lang));
 
         }
 
