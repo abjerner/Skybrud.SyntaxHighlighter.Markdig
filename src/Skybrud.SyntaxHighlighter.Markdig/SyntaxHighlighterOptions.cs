@@ -42,12 +42,11 @@ namespace Skybrud.SyntaxHighlighter.Markdig {
         /// <summary>
         /// Attempts to get the <paramref name="language"/> for <paramref name="alias"/>. 
         /// </summary>
-        /// <param name="alias"></param>
-        /// <param name="language"></param>
+        /// <param name="alias">The alias.</param>
+        /// <param name="language">The language that should be used for <paramref name="alias"/>, or <see cref="Language.None"/> if not found.</param>
         /// <returns><c>true</c> if <paramref name="alias"/> is found; otherwise <c>false</c>.</returns>
         public bool TryGetAlias(string alias, out Language language) {
-            if (String.IsNullOrWhiteSpace(alias)) throw new ArgumentNullException(nameof(alias));
-            return Aliases.TryGetValue(alias, out language);
+            return Aliases.TryGetValue(alias ?? "", out language);
         }
 
         /// <summary>
